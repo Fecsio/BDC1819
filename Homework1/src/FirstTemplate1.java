@@ -71,5 +71,9 @@ public class FirstTemplate1 {
         //Prints the sum of the values higher then 0.5
         double upperSum = dNormalized.filter(x -> x > 0.5).reduce((x,y) -> x+y);
         System.out.println("Sum of values higher then 0.5: " + upperSum );
+
+        //Prints the geometric mean of the values
+        double geomMean = Math.pow(dNormalized.reduce((x,y) -> x * y), 1.0/dNormalized.count());
+        System.out.println("The geometric mean calculated on the dataset is: " + geomMean);
     }
 }
