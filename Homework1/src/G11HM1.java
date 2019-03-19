@@ -13,8 +13,10 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class FirstTemplate1 {
+public class G11HM1 {
 
+    // Comparator class necessary to use the max method, implements the compare method which returns -1 if the first
+    // argument is higher and 1 if the second argument is higher otherwise returns 0
     public static class Dcomparator implements Serializable, Comparator<Double> {
 
         public int compare(Double a, Double b) {
@@ -61,12 +63,15 @@ public class FirstTemplate1 {
         double maxRDD = dNumbers.max(new Dcomparator());
         System.out.println("the maximum value found with the max method from RDD interface is: " + maxRDD);
 
+        // Creaiting an RDD containing values normalized in [0,1]
         //JavaRDD<Double> dNormalized = sc.parallelize(lNumbers).map(x -> x/maxRDD); //alternative way
         JavaRDD<Double> dNormalized = dNumbers.map(x -> x/maxRDD);
 
+        // Now we compute some statistics on dNormalized using some methods from the RDD interface
+
         //Prints the smallest 3 values in the list using RDD's takeOrdered method
         List<Double> smallest = dNormalized.takeOrdered(3);
-        System.out.println("list: " + smallest );
+        System.out.println("List of the 3 smallest values in dNormalized: " + smallest );
 
         //Prints the sum of the values higher then 0.5
         double upperSum = dNormalized.filter(x -> x > 0.5).reduce((x,y) -> x+y);
