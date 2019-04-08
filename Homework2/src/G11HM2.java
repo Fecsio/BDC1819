@@ -35,7 +35,7 @@ public class G11HM2 {
 
         long wc1Start = System.currentTimeMillis();
         JavaPairRDD<String, Long> wordcountpairs = docs
-                // Map phase
+                // Map phase: Creating the pairs (w,count) for each document
                 .flatMapToPair((document) -> {
                     String[] tokens = document.split(" ");
                     HashMap<String, Long> counts = new HashMap<>();
@@ -48,7 +48,7 @@ public class G11HM2 {
                     }
                     return pairs.iterator();
                 })
-                // Reduce phase
+                // Reduce phase: summing the occurrences of each word in every document
                 .reduceByKey((x,y) -> x+y);
         long wc1End = System.currentTimeMillis();
 
@@ -57,7 +57,8 @@ public class G11HM2 {
 
         long wc2Start = System.currentTimeMillis();
         JavaPairRDD<String, Long> wordcountpairs2 = docs
-                // Map - 1
+                // Map - 1: Creating the pairs (w,count) for each document and then assign to every pair
+                // a random key x between (0-k)
                 .flatMapToPair((document) -> {
                     String[] tokens = document.split(" ");
                     HashMap<String, Long> counts = new HashMap<>();
@@ -70,7 +71,7 @@ public class G11HM2 {
                     }
                     return pairs.iterator();
                 }).groupBy(x -> new Long((int)(Math.random()*k)))
-                // Reduce - 1
+                // Reduce - 1 sum the number of occurrences of a specific w in the partition with key = x
                 .flatMapToPair(x -> {
                     Iterator<Tuple2<String, Long>> iter = x._2().iterator();
                     HashMap<String, Long> count = new HashMap<>();
@@ -87,16 +88,18 @@ public class G11HM2 {
                     return pairs.iterator();
                 })
                 // map - 2: Identity
-                // reduce - 2
+                // reduce - 2: Sum the occurrences of every word.
                 .reduceByKey((x,y) -> x+y);
 
         long wc2End = System.currentTimeMillis();
 
         // 2.2.2 code for a variant that does not explicitly assign random keys but exploits the subdivision of docs
         // into K parts in combination with mapPartitionToPair to access each partition separately
+
         long wc3Start = System.currentTimeMillis();
         JavaPairRDD<String, Long> wordcountpairs3 = docs
-                // Map - 1
+                // Map - 1: Creating the pairs (w,count) for each document and then use the k partitions of
+                // docs instead of assigning a random key to each pair
                 .flatMapToPair((document) -> {
                     String[] tokens = document.split(" ");
                     HashMap<String, Long> counts = new HashMap<>();
@@ -108,7 +111,7 @@ public class G11HM2 {
                         pairs.add(new Tuple2<>(e.getKey(), e.getValue()));
                     }
                     return pairs.iterator();})
-                // Reduce - 1
+                // Reduce - 1 Using the k partitions to create the pairs (w,c(x,w)) where x is one of the partitions
                 .mapPartitionsToPair(x -> {
                     Iterator<Tuple2<String, Long>> iter = x;
                     HashMap<String, Long> count = new HashMap<>();
@@ -124,7 +127,7 @@ public class G11HM2 {
                     }
                     return pairs.iterator();})
                 // Map - 2 Identity
-                // Reduce - 2 
+                // Reduce - 2 Sum the occurrences of every word
                 .reduceByKey((x,y) -> x+y);
 
         long wc3End = System.currentTimeMillis();
