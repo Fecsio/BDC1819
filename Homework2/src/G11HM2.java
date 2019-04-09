@@ -110,7 +110,8 @@ public class G11HM2 {
                     for (Map.Entry<String, Long> e : counts.entrySet()) {
                         pairs.add(new Tuple2<>(e.getKey(), e.getValue()));
                     }
-                    return pairs.iterator();})
+                    return pairs.iterator();
+                })
                 // Reduce - 1 Using the k partitions to create the pairs (w,c(x,w)) where x is one of the partitions
                 .mapPartitionsToPair(x -> {
                     Iterator<Tuple2<String, Long>> iter = x;
@@ -125,12 +126,32 @@ public class G11HM2 {
                     for(Map.Entry<String, Long> e : count.entrySet()){
                         pairs.add(new Tuple2<>(e.getKey(), e.getValue()));
                     }
-                    return pairs.iterator();})
+                    return pairs.iterator();
+                })
                 // Map - 2 Identity
                 // Reduce - 2 Sum the occurrences of every word
                 .reduceByKey((x,y) -> x+y);
 
         long wc3End = System.currentTimeMillis();
+
+
+        double avg = wordcountpairs
+                // Map phase: Using the still existing partitions to compute the average in each partition
+                .mapPartitions(x ->{
+                    Double intermediate = new Double(0);
+                    Long count = new Long(0);
+                    while(x.hasNext()) {
+                        count++;
+                        String word = (String)x.next()._1();
+                        intermediate += word.length();
+                    }
+                    // have to do this because the function inside mapPartition must return an iterator
+                    ArrayList<Double> arr = new ArrayList<>();
+                    arr.add(intermediate/count);
+                    return  arr.iterator();
+                })
+                // Reduce phase: computing the average of every partition
+                .reduce((x,y) -> (x+y)/2);
 
         /*// Printing the list of counted words
         wordcountpairs3.foreach(data -> {
@@ -143,6 +164,9 @@ public class G11HM2 {
         System.out.println("Elapsed time for word count 2: " + (wc2End - wc2Start) + " ms");
         System.out.println("Elapsed time for word count 3: " + (wc3End - wc3Start) + " ms");
         //System.in.read();
+
+        System.out.println("average length of distinct words: " + avg);
+
 
     }
 
