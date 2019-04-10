@@ -50,6 +50,10 @@ public class G11HM2 {
                 })
                 // Reduce phase: summing the occurrences of each word in every document
                 .reduceByKey((x,y) -> x+y);
+
+        long wcp = wordcountpairs.count();
+
+
         long wc1End = System.currentTimeMillis();
 
         /* 2.2.1 - code fore a variant of the algorithm presented in class where random keys take K possible values,
@@ -90,6 +94,9 @@ public class G11HM2 {
                 // map - 2: Identity
                 // reduce - 2: Sum the occurrences of every word.
                 .reduceByKey((x,y) -> x+y);
+
+        long wcp2 = wordcountpairs2.count();
+
 
         long wc2End = System.currentTimeMillis();
 
@@ -132,40 +139,34 @@ public class G11HM2 {
                 // Reduce - 2 Sum the occurrences of every word
                 .reduceByKey((x,y) -> x+y);
 
+        long wcp3 = wordcountpairs3.count();
+
         long wc3End = System.currentTimeMillis();
 
 
-        double avg = wordcountpairs
-                // Map phase: Using the still existing partitions to compute the average in each partition
-                .mapPartitions(x ->{
-                    Double intermediate = new Double(0);
-                    Long count = new Long(0);
-                    while(x.hasNext()) {
-                        count++;
-                        String word = (String)x.next()._1();
-                        intermediate += word.length();
-                    }
-                    // have to do this because the function inside mapPartition must return an iterator
-                    ArrayList<Double> arr = new ArrayList<>();
-                    arr.add(intermediate/count);
-                    return  arr.iterator();
-                })
-                // Reduce phase: computing the average of every partition
-                .reduce((x,y) -> (x+y)/2);
+        long countStart = System.currentTimeMillis();
 
-        /*// Printing the list of counted words
-        wordcountpairs3.foreach(data -> {
-            System.out.println("Word: " + data._1() + "---- Count: "+ data._2());
-        });*/
+        // 3 - Counting the average words's length, we take an RDD computed before of composed by distinct words
+        Double sum = wordcountpairs
+                // Map phase: for each word create a double value that represents the length of the word
+                .map(x -> (double)x._1().length())
+                // Reduce phase: Sum all the values obtained in the map phase to get the sum of the length of every word
+                .reduce((x,y) -> x+y);
+        // Computing the average by dividing the sum obtained before by the number of words obtained during one of the
+        // word count computation done before
+        double avg = sum/wcp;
+
+        long countEnd = System.currentTimeMillis();
 
 
         // Printing the time elapsed for each implementation of word count
+        System.out.println("average length of distinct words: " + avg);
         System.out.println("Elapsed time for word count 1: " + (wc1End - wc1Start) + " ms");
         System.out.println("Elapsed time for word count 2: " + (wc2End - wc2Start) + " ms");
         System.out.println("Elapsed time for word count 3: " + (wc3End - wc3Start) + " ms");
+        System.out.println("Elapsed time for calculating the avarage length of a word: " + (countEnd - countStart) + " ms");
         //System.in.read();
 
-        System.out.println("average length of distinct words: " + avg);
 
 
     }
