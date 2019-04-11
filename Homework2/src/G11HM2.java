@@ -81,7 +81,7 @@ public class G11HM2 {
                     HashMap<String, Long> count = new HashMap<>();
                     ArrayList<Tuple2<String, Long>> pairs = new ArrayList<>();
                     while(iter.hasNext()) {
-                        Tuple2 t = (Tuple2)iter.next();
+                        Tuple2 t = iter.next();
                         String key = (String) t._1();
                         Long value = (Long) t._2();
                         count.put(key, value + count.getOrDefault(key,0L));
@@ -125,7 +125,7 @@ public class G11HM2 {
                     HashMap<String, Long> count = new HashMap<>();
                     ArrayList<Tuple2<String, Long>> pairs = new ArrayList<>();
                     while(iter.hasNext()) {
-                        Tuple2 t = (Tuple2)iter.next();
+                        Tuple2 t = iter.next();
                         String key = (String) t._1();
                         Long value = (Long) t._2();
                         count.put(key, value + count.getOrDefault(key,0L));
