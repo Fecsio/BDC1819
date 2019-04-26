@@ -20,7 +20,6 @@
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.6.5" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.module:jackson-module-paranamer:2.6.5" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.module:jackson-module-scala_2.11:2.6.5" level="project" />
-    <orderEntry type="library" name="Gradle: com.github.fommil.netlib:core:1.1.2" level="project" />
     <orderEntry type="library" name="Gradle: com.github.rwl:jtransforms:2.4.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:3.0.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.2.4" level="project" />
@@ -200,5 +199,6 @@
     <orderEntry type="library" name="Gradle: xalan:xalan:2.7.0" level="project" />
     <orderEntry type="library" name="Gradle: xerces:xercesImpl:2.9.1" level="project" />
     <orderEntry type="library" name="Gradle: xmlenc:xmlenc:0.52" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.github.fommil.netlib:core:1.1.2" level="project" />
   </component>
 </module>

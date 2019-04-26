@@ -1,7 +1,6 @@
 import breeze.stats.distributions.Rand;
 import org.apache.spark.mllib.linalg.Vector;
 import org.apache.spark.mllib.linalg.Vectors;
-import  org.apache.spark.mllib.linalg.BLAS;
 import org.json4s.DefaultWriters;
 
 import javax.mail.Part;
@@ -11,6 +10,8 @@ import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+
+import static org.apache.spark.mllib.linalg.BLAS.*;
 
 
 public class G11HM3 {
@@ -24,7 +25,7 @@ public class G11HM3 {
         ArrayList<Long> WP = new ArrayList<>();
         WP.addAll(Collections.nCopies(10000, (long) 1));
 
-        ArrayList<Vector> C = kmeansPP(P, WP, 10, 0);
+        ArrayList<Vector> C = kmeansPP(P, WP, 10, 5);
         C.forEach(v -> System.out.println(v));
 
 
@@ -115,8 +116,7 @@ public class G11HM3 {
 
         }
 
-        //return S;
-        return Lloyd(P, S, k, iter);
+        return Lloyd(P, S, WP, k, iter);
     }
 
     public static HashMap<Vector, ArrayList<Vector>> Partition(ArrayList<Vector> P, ArrayList<Vector> S) {
@@ -135,18 +135,58 @@ public class G11HM3 {
 
             C.computeIfAbsent(bestCluster, k -> new ArrayList<>()).add(p);
         }
-        
+
         return C;
     }
 
-    public static ArrayList<Vector> Lloyd(ArrayList<Vector> P, ArrayList<Vector> S, int k, int iter) {
+    public static ArrayList<Vector> Lloyd(ArrayList<Vector> P, ArrayList<Vector> S, ArrayList<Long> WP, int k, int iter) {
 
-        HashMap<Vector, ArrayList<Vector>> C = Partition(P, S);
-        /*Double phi = Double.POSITIVE_INFINITY;
-        for (int i=0; i<iter; i++) {
+        Double phi = Double.POSITIVE_INFINITY;
+        boolean stop = false;
+        ArrayList<Vector> centroids = new ArrayList<>();
 
+        for (int i=0; i<iter && !stop; i++) {
+            HashMap<Vector, ArrayList<Vector>> C = Partition(P, S); //key = centers, values = points in cluster
+            centroids = new ArrayList<>(C.keySet()); //centers
 
-        }*/
-        return new ArrayList<>();
+            for(int j = 0; j<k; j++){
+                Vector tmp = centroids.get(j); //center j-esimo
+                ArrayList<Vector> clusterJPoints = C.get(tmp); // points in cluster with center = j-esimo cluster
+                int clusterJSize = C.get(tmp).size(); //size of cluster with center = j-esimo cluster
+
+                clusterJPoints.forEach(vector -> scal(WP.get(P.indexOf(vector)), vector)); // w(p) * p
+                Vector sum = clusterJPoints.get(0);
+                for(int v = 1 ; v < clusterJPoints.size(); v++ ){ // sum for all p in Cj
+                    axpy(1, clusterJPoints.get(v), sum);
+                }
+
+                scal(Double.valueOf(1)/clusterJSize, sum); //centroid of cluster Cj
+                centroids.set(j, sum);
+                ArrayList<Vector> tarallo = C.remove(tmp);
+                C.put(sum, tarallo);
+                ArrayList<Vector> tarallo2 = C.get(sum);
+
+            }
+
+            Double phikmeans = Double.valueOf(0);
+            for(Vector c : centroids){
+                for(Vector p : C.get(c)){
+                    phikmeans += WP.get(P.indexOf(p)) * Math.sqrt(Vectors.sqdist(p, c));
+                }
+            }
+
+            if(phikmeans < phi){
+                S.clear();
+                S.addAll(centroids);
+
+            }
+
+            else
+                System.out.println("DIONNCNACNAC");
+                stop = true;
+
+        }
+
+        return S;
     }
 }
