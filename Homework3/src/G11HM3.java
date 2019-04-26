@@ -4,13 +4,13 @@ import org.apache.spark.mllib.linalg.Vectors;
 import  org.apache.spark.mllib.linalg.BLAS;
 import org.json4s.DefaultWriters;
 
+import javax.mail.Part;
+import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.io.*;
 import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
 
 
 public class G11HM3 {
@@ -22,10 +22,10 @@ public class G11HM3 {
 
         ArrayList<Vector> P = readVectorsSeq(args[0]);
         ArrayList<Long> WP = new ArrayList<>();
-        WP.addAll(Collections.nCopies(10000, (long)1));
+        WP.addAll(Collections.nCopies(10000, (long) 1));
 
-        ArrayList<Vector> C = kmeansPP(P, WP, 2, 0);
-        // r.forEach(v -> System.out.println(v));
+        ArrayList<Vector> C = kmeansPP(P, WP, 10, 0);
+        C.forEach(v -> System.out.println(v));
 
 
     }
@@ -33,7 +33,7 @@ public class G11HM3 {
     public static Vector strToVector(String str) {
         String[] tokens = str.split(" ");
         double[] data = new double[tokens.length];
-        for (int i=0; i<tokens.length; i++) {
+        for (int i = 0; i < tokens.length; i++) {
             data[i] = Double.parseDouble(tokens[i]);
         }
         return Vectors.dense(data);
@@ -58,6 +58,8 @@ public class G11HM3 {
         int r = rand.nextInt(P.size());
         S.add(P.remove(r));
         WP.remove(r);
+        P.trimToSize();
+        WP.trimToSize();
 
         // initializes array of probabilities for center selection
         ArrayList<Double> probs = new ArrayList(Collections.nCopies(P.size(), 0));
@@ -65,7 +67,7 @@ public class G11HM3 {
         // initializes array of distances from every point to nearest center
         ArrayList<Double> min_distances = new ArrayList<>(Collections.nCopies(P.size(), Double.POSITIVE_INFINITY));
 
-        for (int i = 2; i <= k; i++) {
+        for (int i = 1; i < k; i++) {
 
             // for each point p in (old)P-S, check if the distance from p to the last found center is less than
             // the saved one (that will be the distance from p to the closest among all already selected centers);
@@ -81,7 +83,7 @@ public class G11HM3 {
 
             // calculates denominator used to calculate the probability
             Double sum = Double.valueOf(0);
-            for (int ii = 0; i < P.size(); ii++) {
+            for (int ii = 0; ii < WP.size(); ii++) {
                 sum += WP.get(ii) * min_distances.get(ii);
             }
 
@@ -100,30 +102,51 @@ public class G11HM3 {
                     Vector newC = P.get(n);
                     P.remove(n);
                     WP.remove(n);
+                    probs.remove(n);
+                    min_distances.remove(n);
+                    P.trimToSize();
+                    WP.trimToSize();
+                    probs.trimToSize();
+                    min_distances.trimToSize();
                     S.add(newC);
+                    break;
                 }
             }
 
         }
 
-        return Lloyd(S, iter);
+        //return S;
+        return Lloyd(P, S, k, iter);
     }
 
-    // We pass only P, assuming S elements have already been removed in kmeanspp
-    public static ArrayList<Vector> Partition(ArrayList<Vector> P){
+    public static HashMap<Vector, ArrayList<Vector>> Partition(ArrayList<Vector> P, ArrayList<Vector> S) {
+
+        HashMap<Vector, ArrayList<Vector>> C = new HashMap<>();
+        for (Vector p : P) {
+            Vector bestCluster = S.get(0);
+            Double bestDist = Math.sqrt(Vectors.sqdist(p, bestCluster));
+            for (Vector s : S) {
+                Double tmpDist = Math.sqrt(Vectors.sqdist(p, s));
+                if (tmpDist < bestDist) {
+                    bestDist = tmpDist;
+                    bestCluster = s;
+                }
+            }
+
+            C.computeIfAbsent(bestCluster, k -> new ArrayList<>()).add(p);
+        }
         
+        return C;
     }
 
-    public static ArrayList<Vector> Lloyd(ArrayList<Vector> S, int iter) {
+    public static ArrayList<Vector> Lloyd(ArrayList<Vector> P, ArrayList<Vector> S, int k, int iter) {
 
+        HashMap<Vector, ArrayList<Vector>> C = Partition(P, S);
+        /*Double phi = Double.POSITIVE_INFINITY;
+        for (int i=0; i<iter; i++) {
+
+
+        }*/
+        return new ArrayList<>();
     }
-
-
-
-
-
-
-
-    }
-
 }
