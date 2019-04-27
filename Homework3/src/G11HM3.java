@@ -1,7 +1,10 @@
 import breeze.stats.distributions.Rand;
+import org.apache.spark.mllib.linalg.BLAS;
+import org.apache.spark.mllib.linalg.DenseVector;
 import org.apache.spark.mllib.linalg.Vector;
 import org.apache.spark.mllib.linalg.Vectors;
 import org.json4s.DefaultWriters;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import javax.mail.Part;
 import javax.swing.plaf.synth.SynthTextAreaUI;
@@ -25,7 +28,7 @@ public class G11HM3 {
         ArrayList<Long> WP = new ArrayList<>();
         WP.addAll(Collections.nCopies(P.size(), (long) 1));
 
-        ArrayList<Vector> C = kmeansPP(P, WP, 20, 5);
+        ArrayList<Vector> C = kmeansPP(P, WP, 20, 20);
         C.forEach(v -> System.out.println(v));
 
 
@@ -57,10 +60,7 @@ public class G11HM3 {
         ArrayList<Vector> S = new ArrayList<>();
         // select and insert in S initial center with uniform probability and remove it from P
         int r = rand.nextInt(P.size());
-        S.add(P.remove(r));
-        P.trimToSize();
-        WP.remove(r);
-        WP.trimToSize();
+        S.add(P.get(r));
 
         // initializes array of probabilities for center selection
         ArrayList<Double> probs = new ArrayList(Collections.nCopies(P.size(), 0));
@@ -68,14 +68,10 @@ public class G11HM3 {
         // initializes array of distances from every point to nearest center
         ArrayList<Double> min_distances = new ArrayList<>(Collections.nCopies(P.size(), Double.POSITIVE_INFINITY));
 
-        System.out.println("P.size():" + P.size());
-        System.out.println("WP.size():" + WP.size());
-        System.out.println("min_distances.size():" + min_distances.size());
-
 
         for (int i = 1; i < k; i++) {
 
-            // for each point p in (old)P-S, check if the distance from p to the last found center is less than
+            // for each point p in P-S, check if the distance from p to the last found center is less than
             // the saved one (that will be the distance from p to the closest among all already selected centers);
             // if it's smaller, it overwrites the old one
             for (int j = 0; j < P.size(); j++) {
@@ -86,6 +82,7 @@ public class G11HM3 {
                     min_distances.set(j, dist);
                 }
             }
+
 
             // calculates denominator used to calculate the probability
             Double sum = Double.valueOf(0);
@@ -106,21 +103,17 @@ public class G11HM3 {
                 cumulativeProbability += probs.get(n);
                 if (p <= cumulativeProbability) {
                     Vector newC = P.get(n);
-                    P.remove(n);
-                    WP.remove(n);
-                    probs.remove(n);
-                    min_distances.remove(n);
-                    P.trimToSize();
-                    WP.trimToSize();
-                    probs.trimToSize();
-                    min_distances.trimToSize();
-                    S.add(newC);
-                    break;
+                    if(!S.contains(newC)) {
+                        S.add(newC);
+                        break;
+                    }
+
                 }
             }
 
         }
 
+        S.forEach(v -> System.out.println(v));
         return Lloyd(P, S, WP, k, iter);
     }
 
@@ -132,10 +125,12 @@ public class G11HM3 {
                 Vector bestCluster = S.get(0);
                 Double bestDist = Math.sqrt(Vectors.sqdist(p, bestCluster));
                 for (Vector s : S) {
-                    Double tmpDist = Math.sqrt(Vectors.sqdist(p, s));
-                    if (tmpDist < bestDist) {
-                        bestDist = tmpDist;
-                        bestCluster = s;
+                    if (s != bestCluster) {
+                        Double tmpDist = Math.sqrt(Vectors.sqdist(p, s));
+                        if (tmpDist < bestDist) {
+                            bestDist = tmpDist;
+                            bestCluster = s;
+                        }
                     }
                 }
                 C.computeIfAbsent(bestCluster, k -> new ArrayList<>()).add(p);
@@ -151,19 +146,23 @@ public class G11HM3 {
         boolean stop = false;
         ArrayList<Vector> centroids = new ArrayList<>();
 
-        int i=0;
-        for (; i<iter && !stop; i++) {
-            if(i == 1) P.addAll(S);
+        int ii=0;
+        for (int i=0; i<iter && !stop; i++) {
             HashMap<Vector, ArrayList<Vector>> C = Partition(P, S); //key = centers, values = points in cluster
             centroids = new ArrayList<>(C.keySet()); //centers
-
+            /*for (Vector v : C.keySet()) {
+                System.out.println("CLUSTER APPENA DOPO PART:");
+                C.get(v).forEach(vv -> System.out.println(vv));
+            }
+*/
             for(int j = 0; j<k; j++){
                 Vector tmp = centroids.get(j); //center j-esimo
                 ArrayList<Vector> clusterJPoints = C.get(tmp); // points in cluster with center = j-esimo cluster
                 int clusterJSize = C.get(tmp).size(); //size of cluster with center = j-esimo cluster
 
                 clusterJPoints.forEach(vector -> scal(WP.get(P.indexOf(vector)), vector)); // w(p) * p
-                Vector sum = clusterJPoints.get(0);
+                Vector sum = new DenseVector(new double[clusterJPoints.get(0).size()]);
+                BLAS.copy(clusterJPoints.get(0), sum);
                 for(int v = 1 ; v < clusterJPoints.size(); v++ ){ // sum for all p in Cj
                     axpy(1, clusterJPoints.get(v), sum);
                 }
@@ -184,7 +183,6 @@ public class G11HM3 {
             }
 
             if(phikmeans < phi){
-
                 S.clear();
                 S.addAll(centroids);
                 phi = phikmeans;
@@ -195,6 +193,8 @@ public class G11HM3 {
                     System.out.println("Size of cluster " + count + "\n" + C.get(c).size());
                 }
 
+                ii++;
+
             }
 
             else {
@@ -202,9 +202,16 @@ public class G11HM3 {
             }
 
 
+            /*if( i==iter-1) {
+                for (Vector v : C.keySet()) {
+                    System.out.println("CLUSTER:");
+                    C.get(v).forEach(vv -> System.out.println(vv));
+                }
+            }*/
 
         }
 
+        System.out.println("# of iterations:" + ii);
         return S;
     }
 }
