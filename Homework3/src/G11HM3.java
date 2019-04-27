@@ -23,9 +23,9 @@ public class G11HM3 {
 
         ArrayList<Vector> P = readVectorsSeq(args[0]);
         ArrayList<Long> WP = new ArrayList<>();
-        WP.addAll(Collections.nCopies(10000, (long) 1));
+        WP.addAll(Collections.nCopies(P.size(), (long) 1));
 
-        ArrayList<Vector> C = kmeansPP(P, WP, 10, 5);
+        ArrayList<Vector> C = kmeansPP(P, WP, 20, 5);
         C.forEach(v -> System.out.println(v));
 
 
@@ -58,8 +58,8 @@ public class G11HM3 {
         // select and insert in S initial center with uniform probability and remove it from P
         int r = rand.nextInt(P.size());
         S.add(P.remove(r));
-        WP.remove(r);
         P.trimToSize();
+        WP.remove(r);
         WP.trimToSize();
 
         // initializes array of probabilities for center selection
@@ -67,6 +67,11 @@ public class G11HM3 {
 
         // initializes array of distances from every point to nearest center
         ArrayList<Double> min_distances = new ArrayList<>(Collections.nCopies(P.size(), Double.POSITIVE_INFINITY));
+
+        System.out.println("P.size():" + P.size());
+        System.out.println("WP.size():" + WP.size());
+        System.out.println("min_distances.size():" + min_distances.size());
+
 
         for (int i = 1; i < k; i++) {
 
@@ -123,17 +128,18 @@ public class G11HM3 {
 
         HashMap<Vector, ArrayList<Vector>> C = new HashMap<>();
         for (Vector p : P) {
-            Vector bestCluster = S.get(0);
-            Double bestDist = Math.sqrt(Vectors.sqdist(p, bestCluster));
-            for (Vector s : S) {
-                Double tmpDist = Math.sqrt(Vectors.sqdist(p, s));
-                if (tmpDist < bestDist) {
-                    bestDist = tmpDist;
-                    bestCluster = s;
+            if(!S.contains(p)) {
+                Vector bestCluster = S.get(0);
+                Double bestDist = Math.sqrt(Vectors.sqdist(p, bestCluster));
+                for (Vector s : S) {
+                    Double tmpDist = Math.sqrt(Vectors.sqdist(p, s));
+                    if (tmpDist < bestDist) {
+                        bestDist = tmpDist;
+                        bestCluster = s;
+                    }
                 }
+                C.computeIfAbsent(bestCluster, k -> new ArrayList<>()).add(p);
             }
-
-            C.computeIfAbsent(bestCluster, k -> new ArrayList<>()).add(p);
         }
 
         return C;
@@ -145,7 +151,9 @@ public class G11HM3 {
         boolean stop = false;
         ArrayList<Vector> centroids = new ArrayList<>();
 
-        for (int i=0; i<iter && !stop; i++) {
+        int i=0;
+        for (; i<iter && !stop; i++) {
+            if(i == 1) P.addAll(S);
             HashMap<Vector, ArrayList<Vector>> C = Partition(P, S); //key = centers, values = points in cluster
             centroids = new ArrayList<>(C.keySet()); //centers
 
@@ -161,10 +169,10 @@ public class G11HM3 {
                 }
 
                 scal(Double.valueOf(1)/clusterJSize, sum); //centroid of cluster Cj
+
                 centroids.set(j, sum);
-                ArrayList<Vector> tarallo = C.remove(tmp);
-                C.put(sum, tarallo);
-                ArrayList<Vector> tarallo2 = C.get(sum);
+                ArrayList<Vector> tempPoints = C.remove(tmp);
+                C.put(sum, tempPoints);
 
             }
 
@@ -176,14 +184,24 @@ public class G11HM3 {
             }
 
             if(phikmeans < phi){
+
                 S.clear();
                 S.addAll(centroids);
+                phi = phikmeans;
+
+                int count = 0;
+                for(Vector c: centroids){
+                    count++;
+                    System.out.println("Size of cluster " + count + "\n" + C.get(c).size());
+                }
 
             }
 
-            else
-                System.out.println("DIONNCNACNAC");
+            else {
                 stop = true;
+            }
+
+
 
         }
 
