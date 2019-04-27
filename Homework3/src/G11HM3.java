@@ -28,7 +28,7 @@ public class G11HM3 {
         ArrayList<Long> WP = new ArrayList<>();
         WP.addAll(Collections.nCopies(P.size(), (long) 1));
 
-        ArrayList<Vector> C = kmeansPP(P, WP, 20, 20);
+        ArrayList<Vector> C = kmeansPP(P, WP, 16, 50);
         C.forEach(v -> System.out.println(v));
 
 
@@ -137,6 +137,10 @@ public class G11HM3 {
             }
         }
 
+        for(Vector s: S){
+            C.computeIfAbsent(s, k -> new ArrayList<>());
+        }
+
         return C;
     }
 
@@ -160,19 +164,22 @@ public class G11HM3 {
                 ArrayList<Vector> clusterJPoints = C.get(tmp); // points in cluster with center = j-esimo cluster
                 int clusterJSize = C.get(tmp).size(); //size of cluster with center = j-esimo cluster
 
-                clusterJPoints.forEach(vector -> scal(WP.get(P.indexOf(vector)), vector)); // w(p) * p
-                Vector sum = new DenseVector(new double[clusterJPoints.get(0).size()]);
-                BLAS.copy(clusterJPoints.get(0), sum);
-                for(int v = 1 ; v < clusterJPoints.size(); v++ ){ // sum for all p in Cj
-                    axpy(1, clusterJPoints.get(v), sum);
+                if(clusterJSize > 0) {
+                    clusterJPoints.forEach(vector -> scal(WP.get(P.indexOf(vector)), vector)); // w(p) * p
+                    Vector sum = new DenseVector(new double[clusterJPoints.get(0).size()]);
+                    BLAS.copy(clusterJPoints.get(0), sum);
+                    for (int v = 1; v < clusterJPoints.size(); v++) { // sum for all p in Cj
+                        axpy(1, clusterJPoints.get(v), sum);
+                    }
+
+                    scal(Double.valueOf(1) / clusterJSize, sum); //centroid of cluster Cj
+
+                    centroids.set(j, sum);
+                    ArrayList<Vector> tempPoints = C.remove(tmp);
+                    C.put(sum, tempPoints);
                 }
 
-                scal(Double.valueOf(1)/clusterJSize, sum); //centroid of cluster Cj
-
-                centroids.set(j, sum);
-                ArrayList<Vector> tempPoints = C.remove(tmp);
-                C.put(sum, tempPoints);
-
+                else System.out.println("CLUSTER VUOTO");
             }
 
             Double phikmeans = Double.valueOf(0);
@@ -182,30 +189,51 @@ public class G11HM3 {
                 }
             }
 
-            if(phikmeans < phi){
+            //if(phikmeans < phi){
+                ii++;
                 S.clear();
                 S.addAll(centroids);
                 phi = phikmeans;
 
                 int count = 0;
-                for(Vector c: centroids){
-                    count++;
-                    System.out.println("Size of cluster " + count + "\n" + C.get(c).size());
+
+                try (PrintWriter p = new PrintWriter(new BufferedWriter(new FileWriter("Homework3/output.txt", true)))) {
+                    p.println("\n Iteraction: " + ii + "\n");
+                    p.println("\n Phi_k_means = " + phikmeans + "\n");
+
+                    Integer[] numArray = new Integer[20];
+
+                    for(Vector c: centroids){
+                        numArray[count] = C.get(c).size();
+                        count++;
+                        p.println("Size of cluster " + count + ": "+ C.get(c).size());
+                    }
+
+                    double median;
+                    if (numArray.length % 2 == 0)
+                        median = ((double)numArray[numArray.length/2] + (double)numArray[numArray.length/2 - 1])/2;
+                    else
+                        median = (double) numArray[numArray.length/2];
+
+                    p.println("Median: " + median);
+
+                } catch (IOException ex) {
+                    System.out.println(ex.toString());
                 }
 
-                ii++;
 
-            }
+            /*}
 
             else {
+                System.out.println("\n Phi_k_means = " + phikmeans + "\n");
                 stop = true;
             }
+*/
 
-
-            /*if( i==iter-1) {
+            /*if( i==iter-1 || stop) {
                 for (Vector v : C.keySet()) {
                     System.out.println("CLUSTER:");
-                    C.get(v).forEach(vv -> System.out.println(vv));
+                    C.get(k-1).forEach(vv -> System.out.println(vv));
                 }
             }*/
 

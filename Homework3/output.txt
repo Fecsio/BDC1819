@@ -1,0 +1,1150 @@
+
+ Iteraction: 1
+
+
+ Phi_k_means = 163679.87726794183
+
+Size of cluster 1: 63
+Size of cluster 2: 63
+Size of cluster 3: 63
+Size of cluster 4: 63
+Size of cluster 5: 63
+Size of cluster 6: 0
+Size of cluster 7: 63
+Size of cluster 8: 63
+Size of cluster 9: 63
+Size of cluster 10: 62
+Size of cluster 11: 63
+Size of cluster 12: 63
+Size of cluster 13: 127
+Size of cluster 14: 63
+Size of cluster 15: 63
+Size of cluster 16: 63
+Median: 62.5
+
+ Iteraction: 2
+
+
+ Phi_k_means = 165093.24811317475
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 64
+Size of cluster 4: 0
+Size of cluster 5: 64
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 128
+Size of cluster 13: 63
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 64
+Median: 64.0
+
+ Iteraction: 3
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 4
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 5
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 6
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 7
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 8
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 9
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 10
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 11
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 12
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 13
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 14
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 15
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 16
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 17
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 18
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 19
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 20
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 21
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 22
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 23
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 24
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 25
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 26
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 27
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 28
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 29
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 30
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 31
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 32
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 33
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 34
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 35
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 36
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 37
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 38
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 39
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 40
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 41
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 42
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 43
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 44
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 45
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 46
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 47
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 48
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 49
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
+
+ Iteraction: 50
+
+
+ Phi_k_means = 165093.24811317466
+
+Size of cluster 1: 64
+Size of cluster 2: 64
+Size of cluster 3: 128
+Size of cluster 4: 64
+Size of cluster 5: 0
+Size of cluster 6: 64
+Size of cluster 7: 64
+Size of cluster 8: 64
+Size of cluster 9: 64
+Size of cluster 10: 64
+Size of cluster 11: 64
+Size of cluster 12: 64
+Size of cluster 13: 64
+Size of cluster 14: 64
+Size of cluster 15: 64
+Size of cluster 16: 63
+Median: 64.0
