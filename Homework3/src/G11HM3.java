@@ -1,43 +1,33 @@
-import breeze.stats.distributions.Rand;
-import org.apache.commons.math3.ml.distance.ManhattanDistance;
-import org.apache.spark.ml.clustering.KMeans;
 import org.apache.spark.mllib.linalg.BLAS;
-import org.apache.spark.mllib.linalg.DenseVector;
 import org.apache.spark.mllib.linalg.Vector;
 import org.apache.spark.mllib.linalg.Vectors;
-import org.json4s.DefaultWriters;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-
-import javax.mail.Part;
-import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-import static org.apache.spark.mllib.linalg.BLAS.*;
 
 
 public class G11HM3 {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
         if (args.length == 0) {
-            throw new IllegalArgumentException("Expecting the file name on the command line");
+            throw new IllegalArgumentException("Expecting the file name, the desired number of clusters and the desired number of iterations on the command line");
         }
 
-        ArrayList<Vector> P = readVectorsSeq(args[0]);
-        ArrayList<Long> WP = new ArrayList<>();
-        WP.addAll(Collections.nCopies(P.size(), (long) 1));
+        ArrayList<Vector> P = readVectorsSeq(args[0]); // Reads the input points from the file into an ArrayList<Vector>
+
+        ArrayList<Long> WP = new ArrayList<>(); // Declares ArrayList of weights
+        WP.addAll(Collections.nCopies(P.size(), (long) 1)); // Sets all weights to one
 
         long start = System.currentTimeMillis();
-        ArrayList<Vector> C = kmeansPP(P, WP, 15, 100);
+        ArrayList<Vector> C = kmeansPP(P, WP, Integer.parseInt(args[1]), Integer.parseInt(args[2])); // Runs kmeansPP(P,WP,k,iter), obtaining a set of k centers C (k and iter are given from the command line)
         long end = System.currentTimeMillis();
         long execTime = end - start;
 
-        System.out.println(kmeansObj(P,C));
-        System.out.println("tempo: " + execTime/1000 + " seconds");
+        System.out.println("Value of kmeansObj: " + kmeansObj(P,C)); // Runs kmeansObj(P,C) printing the returned value
 
+        System.out.println("Execution time: " + (double)execTime/1000 + " seconds");
 
     }
 
@@ -62,6 +52,10 @@ public class G11HM3 {
     }
 
     public static ArrayList<Vector> kmeansPP(ArrayList<Vector> P, ArrayList<Long> WP, int k, int iter) {
+        /**
+         * Implementation of kmeansPP algorithm
+         * @return a first set of k centroids to use as input in Lloyd's algorithm
+         */
 
         Random rand = new Random();
         ArrayList<Vector> S = new ArrayList<>();
@@ -77,7 +71,7 @@ public class G11HM3 {
 
         for (int i = 1; i < k; i++) {
 
-            // for each point p in P-S, check if the distance from p to the last found center is less than
+            // for each point p in P, check if the distance from p to the last found center is less than
             // the saved one (that will be the distance from p to the closest among all already selected centers);
             // if it's smaller, it overwrites the old one
             for (int j = 0; j < P.size(); j++) {
@@ -122,137 +116,60 @@ public class G11HM3 {
         return Lloyd(P, S, WP, k, iter);
     }
 
-    public static HashMap<Vector, ArrayList<Vector>> Partition(ArrayList<Vector> P, ArrayList<Vector> S) {
+    public static ArrayList<Vector> Lloyd(ArrayList<Vector> P, ArrayList<Vector> S, ArrayList<Long> WP, int k, int iter) {
+        /**
+         * Implementation of LLoyd's algorithm
+         * @return k centroids calculated after iter iterations of LLoyd's algorithm
+         */
 
-        HashMap<Vector, ArrayList<Vector>> C = new HashMap<>();
-        for (Vector p : P) {
-            if (!S.contains(p)) {
-                Vector bestCluster = S.get(0);
-                Double bestDist = Math.sqrt(Vectors.sqdist(p, bestCluster));
-                for (Vector s : S) {
-                    if (s != bestCluster) {
-                        Double tmpDist = Math.sqrt(Vectors.sqdist(p, s));
-                        if (tmpDist < bestDist) {
+        for (int i = 0; i < iter; i++) {
+            ArrayList<Vector> sumPoints = new ArrayList<>(); // sumPoints.get(j) will be sum_{p in Cj} p * w(p)
+            long[] sumWeights = new long[k]; // sumWeights.get(j) will be sum_{p in Cj} w(p)
+
+            for(int j = 0; j < S.size(); j++){
+                sumPoints.add(Vectors.dense(new double[P.get(0).size()]));
+            }
+
+            for (int v = 0; v < P.size(); v++) { // for each point p in P, find distance from closest centroid in S
+                 Vector p = P.get(v);
+                if (!S.contains(p)) { // P - S
+                    int bestClusterIndex = 0;
+                    Double bestDist = Math.sqrt(Vectors.sqdist(p, S.get(0))); // calculates distance from first centroid in S
+                    for (int s = 1; s < S.size(); s++) {
+                        Vector newC = S.get(s);
+                        Double tmpDist = Math.sqrt(Vectors.sqdist(p, newC)); // calculates distance from s-th centroid in S
+                        if (tmpDist < bestDist) { // check if newly calculated distance is less than previous minimum distance
                             bestDist = tmpDist;
-                            bestCluster = s;
+                            bestClusterIndex = s;
                         }
                     }
+
+                    // here bestClusterIndex == index of centroid in S with minimum distance from p
+                    long weight = WP.get(v);
+                    BLAS.axpy(weight, p, sumPoints.get(bestClusterIndex));
+                    sumWeights[bestClusterIndex] += weight;
                 }
-                C.computeIfAbsent(bestCluster, k -> new ArrayList<>()).add(p);
             }
-        }
 
-        for (Vector s : S) {
-            C.computeIfAbsent(s, k -> new ArrayList<>());
-        }
+            // here sumPoints.get(j) = sum_{p in Cj} p * w(p) and
+            // sumWeight[j] = sum_{p in Cj} w(p)
 
-        return C;
-    }
+            for (int j = 0; j < k; j++) { // calculating new k-centroids
 
-    public static ArrayList<Vector> Lloyd(ArrayList<Vector> P, ArrayList<Vector> S, ArrayList<Long> WP, int k, int iter) {
-
-        Double phi = kmeansObj(P,S);
-
-        boolean stop = false;
-        ArrayList<Vector> centroids = new ArrayList<>();
-
-        int ii = 0;
-        for (int i = 0; i < iter && !stop; i++) {
-            HashMap<Vector, ArrayList<Vector>> C = Partition(P, S); //key = centers, values = points in cluster
-            centroids = new ArrayList<>(C.keySet()); //centers
-
-            for (int j = 0; j < k; j++) {
-                Vector tmp = centroids.get(j); //j-th center
-                ArrayList<Vector> clusterJPoints = C.get(tmp); // points in cluster with center = j-th cluster
-                int clusterJSize = C.get(tmp).size(); //size of cluster with center = j-th cluster
-
-                if (clusterJSize > 0) {
-                    clusterJPoints.forEach(vector -> scal(WP.get(P.indexOf(vector)), vector)); // w(p) * p
-                    Vector sum = new DenseVector(new double[clusterJPoints.get(0).size()]);
-                    BLAS.copy(clusterJPoints.get(0), sum);
-                    for (int v = 1; v < clusterJPoints.size(); v++) { // sum for all p in Cj
-                        axpy(1, clusterJPoints.get(v), sum);
-                    }
-
-                    scal(Double.valueOf(1) / clusterJSize, sum); //final calculation of centroid of cluster Cj
-
-                    centroids.set(j, sum);
-                    ArrayList<Vector> tempPoints = C.remove(tmp);
-                    C.put(sum, tempPoints);
+                if (sumWeights[j] > 0) {
+                    BLAS.scal(Double.valueOf(1) / sumWeights[j], sumPoints.get(j)); // using sumWeights and sumPoints, calculates new j-th centroid
                 } else {
-                    System.out.println("WARNING: empty cluster");
-
+                    System.out.println("WARNING: empty cluster found");
                 }
+
+                S.set(j, sumPoints.get(j)); // saves new j-th centroid in S
             }
 
-            Double phikm = kmeansObj(P, centroids);
-
-           // if(phikm < phi){
-            phi = phikm;
-            S.clear();
-            S.addAll(centroids);
-
-
-
-            int count = 0;
-
-            /*try (PrintWriter p = new PrintWriter(new BufferedWriter(new FileWriter("Homework3/output.txt", true)))) {
-                p.println("\n Iteraction: " + ii + "\n");
-                p.println("\n Phi_k_means = " + phikm + "\n");
-                if (phikm >= phi) p.println("\n STOP \n");
-                if (S.equals(centroids)) p.println("\n STOP2 \n");
-
-
-
-
-
-
-                Integer[] numArray = new Integer[k];
-
-                for (Vector c : centroids) {
-                    numArray[count] = C.get(c).size();
-                    count++;
-                    p.println("Size of cluster " + count + ": " + C.get(c).size());
-                }
-
-                double median;
-                Arrays.sort(numArray);
-                if (numArray.length % 2 == 0)
-                    median = ((double) numArray[numArray.length / 2] + (double) numArray[numArray.length / 2 - 1]) / 2;
-                else
-                    median = (double) numArray[numArray.length / 2];
-
-                p.println("Median: " + median);
-
-            } catch (IOException ex) {
-                System.out.println(ex.toString());
-            }
-
-
-            /*} else {
-                System.out.println("\n Phi_k_means = " + phikm + "\n");
-                stop = true;
-            }*/
-
-
-            /*if (i == iter - 1 || stop) {
-                 count = 0;
-                try (PrintWriter p = new PrintWriter(new BufferedWriter(new FileWriter("Homework3/output.txt", true)))) {
-                    for (Vector v : C.keySet()) {
-                        count++;
-                        p.println("\nCLUSTER:" + count + "\n");
-                        C.get(v).forEach(vv -> p.println(vv));
-                    }
-                } catch (IOException ex) {
-                    System.out.println(ex.toString());
-                }
-            }*/
         }
 
-        //System.out.println("# of iterations:" + ii);
-        //System.out.println(kmeansObj(P,S));
         return S;
     }
+
 
     public static double kmeansObj(ArrayList<Vector> P, ArrayList<Vector> C) {
 
