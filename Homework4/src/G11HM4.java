@@ -114,7 +114,23 @@ public class G11HM4
         //------------- ROUND 3: COMPUTE OBJ FUNCTION --------------------
         //
         //------------- ADD YOUR CODE HERE--------------------------------
-        // 
+        //
+
+        Double obj = pointset.map(p -> {
+            double bestdist = Math.sqrt(Vectors.sqdist(p, centers.get(0)));
+
+            for (int c = 1; c<centers.size(); c++){
+                double tempDist = Math.sqrt(Vectors.sqdist(p, centers.get(c)));
+
+                if(tempDist < bestdist){
+                    bestdist = tempDist;
+                }
+            }
+            return bestdist;
+        }).reduce((x,y) -> x+y);
+
+        return obj/pointset.count();
+
     }
 
     public static ArrayList<Long> compute_weights(ArrayList<Vector> points, ArrayList<Vector> centers)
