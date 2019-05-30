@@ -99,6 +99,12 @@ public class G11HM4
             return c_w.iterator();
         });
 
+        coreset.first();
+
+        System.out.println("First round:" + (System.currentTimeMillis() - roundeStart) + " milliseconds");
+
+        roundeStart = System.currentTimeMillis();
+
         //------------- ROUND 2 ---------------------------
 
         ArrayList<Tuple2<Vector, Long>> elems = new ArrayList<>(k*L);
@@ -110,10 +116,7 @@ public class G11HM4
             coresetPoints.add(i, elems.get(i)._1);
             weights.add(i, elems.get(i)._2);
         }
-
-        System.out.println("First round:" + (System.currentTimeMillis() - roundeStart) + " milliseconds");
-        roundeStart = System.currentTimeMillis();
-
+    
         ArrayList<Vector> centers = G11HM3.kmeansPP(coresetPoints, weights, k, iter);
 
         System.out.println("Second round:" + (System.currentTimeMillis() - roundeStart) + " milliseconds");
@@ -141,7 +144,7 @@ public class G11HM4
 
 
 
-        System.out.println("Terzo round:" + (System.currentTimeMillis() - roundeStart) + " milliseconds");
+        System.out.println("Third round:" + (System.currentTimeMillis() - roundeStart) + " milliseconds");
 
         return obj;
 
