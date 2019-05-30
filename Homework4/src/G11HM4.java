@@ -76,6 +76,8 @@ public class G11HM4
         // --- ADD INSTRUCTIONS TO TAKE AND PRINT TIMES OF ROUNDS 1, 2 and 3 
         //
 
+        long roundeStart = System.currentTimeMillis();
+
         //------------- ROUND 1 ---------------------------
         JavaRDD<Tuple2<Vector,Long>> coreset = pointset.mapPartitions(x ->
         {
@@ -109,14 +111,22 @@ public class G11HM4
             weights.add(i, elems.get(i)._2);
         }
 
+        System.out.println("First round:" + (System.currentTimeMillis() - roundeStart) + " milliseconds");
+        roundeStart = System.currentTimeMillis();
+
         ArrayList<Vector> centers = G11HM3.kmeansPP(coresetPoints, weights, k, iter);
+
+        System.out.println("Second round:" + (System.currentTimeMillis() - roundeStart) + " milliseconds");
+        roundeStart = System.currentTimeMillis();
+
 
         //------------- ROUND 3: COMPUTE OBJ FUNCTION --------------------
         //
         //------------- ADD YOUR CODE HERE--------------------------------
         //
 
-        Double obj = pointset.map(p -> {
+
+        Double obj = pointset.mapToDouble(p -> {
             double bestdist = Math.sqrt(Vectors.sqdist(p, centers.get(0)));
 
             for (int c = 1; c<centers.size(); c++){
@@ -127,9 +137,13 @@ public class G11HM4
                 }
             }
             return bestdist;
-        }).reduce((x,y) -> x+y);
+        }).mean();
 
-        return obj/pointset.count();
+
+
+        System.out.println("Terzo round:" + (System.currentTimeMillis() - roundeStart) + " milliseconds");
+
+        return obj;
 
     }
 
