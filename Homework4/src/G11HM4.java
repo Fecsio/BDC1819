@@ -129,11 +129,12 @@ public class G11HM4
         //
 
 
-        Double obj = pointset.mapToDouble(p -> {
-            double bestdist = Math.sqrt(Vectors.sqdist(p, centers.get(0)));
+        double obj = pointset.mapToDouble(p -> {
+            double bestdist = euclidean(p, centers.get(0));
 
             for (int c = 1; c<centers.size(); c++){
-                double tempDist = Math.sqrt(Vectors.sqdist(p, centers.get(c)));
+                double tempDist = euclidean(p, centers.get(c));
+
 
                 if(tempDist < bestdist){
                     bestdist = tempDist;
@@ -141,8 +142,6 @@ public class G11HM4
             }
             return bestdist;
         }).mean();
-
-
 
         System.out.println("Third round:" + (System.currentTimeMillis() - roundeStart) + " milliseconds");
 
