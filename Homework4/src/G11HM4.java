@@ -99,7 +99,7 @@ public class G11HM4
             return c_w.iterator();
         });
 
-        coreset.first();
+        coreset.cache().count();
 
         System.out.println("First round:" + (System.currentTimeMillis() - roundeStart) + " milliseconds");
 
