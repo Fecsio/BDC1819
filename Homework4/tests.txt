@@ -1,0 +1,195 @@
+Number of points is : 11000000                                                  
+Number of clusters is : 10
+Number of parts is : 16
+Number of iterations is : 0
+First round:8207 milliseconds                                                   
+Second round:672 milliseconds
+Third round:834 milliseconds                                                    
+Objective function is : <0.5882435713327573>
+
+Number of points is : 11000000                                                  
+Number of clusters is : 10
+Number of parts is : 16
+Number of iterations is : 0
+First round:5144 milliseconds                                                   
+Second round:550 milliseconds
+Third round:769 milliseconds                                                    
+Objective function is : <0.593373666549073>
+
+Number of points is : 11000000                                                  
+Number of clusters is : 10
+Number of parts is : 16
+Number of iterations is : 0
+First round:8045 milliseconds                                                   
+Second round:575 milliseconds
+Third round:1076 milliseconds                                                   
+Objective function is : <0.6657199600647473>
+
+Number of points is : 11000000                                                  
+Number of clusters is : 25
+Number of parts is : 16
+Number of iterations is : 0
+First round:13519 milliseconds                                                  
+Second round:293 milliseconds
+Third round:8866 milliseconds                                                   
+Objective function is : <0.4948545326224379>
+
+Number of points is : 11000000                                                  
+Number of clusters is : 25
+Number of parts is : 16
+Number of iterations is : 0
+First round:14551 milliseconds                                                  
+Second round:323 milliseconds
+Third round:1379 milliseconds                                                   
+Objective function is : <0.48201179933809607>
+
+Number of points is : 11000000                                                  
+Number of clusters is : 25
+Number of parts is : 16
+Number of iterations is : 0
+First round:15489 milliseconds                                                  
+Second round:319 milliseconds
+Third round:1338 milliseconds                                                   
+Objective function is : <0.4921668964827011>
+
+Number of points is : 11000000                                                  
+Number of clusters is : 50
+Number of parts is : 16
+Number of iterations is : 0
+First round:22946 milliseconds                                                  
+Second round:1143 milliseconds                                                  
+Third round:1231 milliseconds                                                   
+Objective function is : <0.4185080219067266>
+
+Number of points is : 11000000                                                  
+Number of clusters is : 50
+Number of parts is : 16
+Number of iterations is : 0
+First round:30357 milliseconds                                                  
+Second round:531 milliseconds
+Third round:2416 milliseconds                                                   
+Objective function is : <0.426380592524774>
+
+Number of points is : 11000000                                                  
+Number of clusters is : 50
+Number of parts is : 16
+Number of iterations is : 0
+First round:27259 milliseconds                                                  
+Second round:470 milliseconds
+Third round:1523 milliseconds                                                   
+Objective function is : <0.4214966343945981>
+
+Number of points is : 11000000                                                  
+Number of clusters is : 50
+Number of parts is : 16
+Number of iterations is : 10
+First round:59863 milliseconds
+Second round:700 milliseconds
+Third round:5175 milliseconds                                                   
+Objective function is : <0.3630853185898827>
+
+Number of points is : 11000000                                                  
+Number of clusters is : 50
+Number of parts is : 16
+Number of iterations is : 10
+First round:49905 milliseconds
+Second round:409 milliseconds
+Third round:1423 milliseconds                                                   
+Objective function is : <0.35977569229547635>
+
+Number of points is : 11000000                                                  
+Number of clusters is : 50
+Number of parts is : 16
+Number of iterations is : 10
+First round:42443 milliseconds
+Second round:501 milliseconds
+Third round:4162 milliseconds                                                   
+Objective function is : <0.3596411360328381>
+
+Number of points is : 22000000                                                  
+Number of clusters is : 50
+Number of parts is : 32
+Number of iterations is : 10
+First round:83597 milliseconds                                                  
+Second round:892 milliseconds
+Third round:8591 milliseconds                                                   
+Objective function is : <0.4330334895319975>
+
+Number of points is : 22000000                                                  
+Number of clusters is : 50
+Number of parts is : 32
+Number of iterations is : 10
+First round:78977 milliseconds
+Second round:431 milliseconds
+Third round:6819 milliseconds                                                   
+Objective function is : <0.43227987665484824>
+
+Number of points is : 22000000                                                  
+Number of clusters is : 50
+Number of parts is : 32
+Number of iterations is : 10
+First round:81915 milliseconds
+Second round:629 milliseconds
+Third round:7690 milliseconds                                                   
+Objective function is : <0.43235326606553365>
+
+Number of points is : 22000000                                                  
+Number of clusters is : 50
+Number of parts is : 32
+Number of iterations is : 10
+First round:43633 milliseconds
+Second round:549 milliseconds
+Third round:5696 milliseconds                                                   
+Objective function is : <0.43461396152706794>
+
+Number of points is : 22000000                                                  
+Number of clusters is : 50
+Number of parts is : 32
+Number of iterations is : 10
+First round:72162 milliseconds
+Second round:592 milliseconds
+Third round:5752 milliseconds                                                   
+Objective function is : <0.4311514371440327>
+
+Number of points is : 22000000                                                  
+Number of clusters is : 50
+Number of parts is : 32
+Number of iterations is : 10
+First round:70835 milliseconds
+Second round:701 milliseconds
+Third round:11006 milliseconds                                                  
+Objective function is : <0.4319501017100642>
+
+Number of points is : 22000000                                                  
+Number of clusters is : 50
+Number of parts is : 32
+Number of iterations is : 10
+First round:58883 milliseconds
+Second round:573 milliseconds
+Third round:6622 milliseconds                                                   
+Objective function is : <0.4321623335647658>
+
+Number of points is : 22000000                                                  
+Number of clusters is : 50
+Number of parts is : 32
+Number of iterations is : 10
+First round:60738 milliseconds
+Second round:579 milliseconds
+Third round:1872 milliseconds                                                   
+Objective function is : <0.4327333428342889>
+
+Number of points is : 22000000                                                  
+Number of clusters is : 50
+Number of parts is : 32
+Number of iterations is : 10
+First round:52233 milliseconds 
+Second round:3213 milliseconds
+Third round:10509 milliseconds                                                  
+Objective function is : <0.43249469840851534>
+
+
+
+
+
+
+
